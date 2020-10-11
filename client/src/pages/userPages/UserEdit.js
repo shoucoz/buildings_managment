@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import UserForm from "../../components/form/UserForm";
-import {HOST} from "../../confing";
 import history, {deleteHandler} from "../../utils";
-const axios = require('axios');
+import api from "../../api";
 
 
 const UserEdit = ({match}) => {
@@ -12,7 +11,7 @@ const UserEdit = ({match}) => {
     })
 
     useEffect(()=> {
-        axios.get(`${HOST}/users/${match.params.id}`).then(res => setState({
+        api.User.getUser(match.params.id).then(res => setState({
             data: res.data,
             loading: false
         }))
@@ -21,7 +20,7 @@ const UserEdit = ({match}) => {
     const redirect = () =>  history.push('/users')
 
     const onSubmit = values => {
-        axios.put(`${HOST}/useredit/${match.params.id}`, values).then(_ => {
+        api.User.editUser(match.params.id, values).then(_ => {
             redirect()
         }).catch(function (error) {
             console.log(error);
@@ -35,7 +34,7 @@ const UserEdit = ({match}) => {
                 title={`Edit user ${state.data.first_name}`}
                 onSubmit={onSubmit}
                 initialValues={state.data}
-                deleteHandler={(event) => deleteHandler(event,`${HOST}/userdelete/${match.params.id}`, redirect)} />
+                deleteHandler={(event) => deleteHandler(event,`/userdelete/${match.params.id}`, redirect)} />
     )
 }
 

@@ -10,14 +10,34 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce5b8b13-39fb-4b54-9a6f-a8451b7f7992" name="Default Changelist" comment="" />
+    <list default="true" id="ce5b8b13-39fb-4b54-9a6f-a8451b7f7992" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/companyPages/NewCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/companyPages/NewCompany.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/company.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/knexfile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/knexfile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/003_buildings_and_companies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/003_buildings_and_companies.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/building.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/building.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/company.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/tslint.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/client" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1iKQpPaW48GYq8QmzFcFLAVwSaz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -26,20 +46,26 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.tslint" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/api" />
       <recent name="$PROJECT_DIR$/controllers" />
       <recent name="$PROJECT_DIR$/client/src/components/building" />
       <recent name="$PROJECT_DIR$/client/src/components/company" />
-      <recent name="$PROJECT_DIR$/client/src/components" />
-      <recent name="$PROJECT_DIR$/client/src/validations" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -55,7 +81,11 @@
       <workItem from="1601739389047" duration="7970000" />
       <workItem from="1601871145586" duration="293000" />
       <workItem from="1601923703363" duration="23354000" />
-      <workItem from="1602006401027" duration="132206000" />
+      <workItem from="1602006401027" duration="132802000" />
+      <workItem from="1602497473388" duration="9336000" />
+      <workItem from="1602581615583" duration="16338000" />
+      <workItem from="1602618472172" duration="6015000" />
+      <workItem from="1602628292173" duration="523000" />
     </task>
     <servers />
   </component>
@@ -72,12 +102,24 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601972532890">
+    <state x="424" y="23" key="#General" timestamp="1602627841838">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
-    <state x="184" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.812@0.23.1440.812" timestamp="1601972532890" />
+    <state x="424" y="23" key="#General/0.23.1440.812@0.23.1440.812" timestamp="1602627841838" />
+    <state x="354" y="114" key="#Inspections" timestamp="1602628057194">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state x="354" y="114" key="#Inspections/0.23.1440.812@0.23.1440.812" timestamp="1602628057194" />
+    <state x="184" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602628318134">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state x="184" y="91" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.812@0.23.1440.812" timestamp="1602628318133" />
     <state x="454" y="233" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602441004018">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
@@ -86,10 +128,18 @@
       <screen x="0" y="23" width="1440" height="812" />
     </state>
     <state x="458" y="178" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.812@0.23.1440.812" timestamp="1602438665156" />
-    <state x="418" y="61" width="604" height="735" key="find.popup" timestamp="1602369322551">
+    <state x="221" y="68" key="SettingsEditor" timestamp="1602627667891">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
-    <state x="418" y="61" width="604" height="735" key="find.popup/0.23.1440.812@0.23.1440.812" timestamp="1602369322551" />
+    <state x="221" y="68" key="SettingsEditor/0.23.1440.812@0.23.1440.812" timestamp="1602627667891" />
+    <state x="320" y="169" key="Vcs.Push.Dialog.v2" timestamp="1602626979239">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state x="320" y="169" key="Vcs.Push.Dialog.v2/0.23.1440.812@0.23.1440.812" timestamp="1602626979239" />
+    <state x="418" y="61" width="604" height="735" key="find.popup" timestamp="1602587470842">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state x="418" y="61" width="604" height="735" key="find.popup/0.23.1440.812@0.23.1440.812" timestamp="1602587470842" />
     <state x="385" y="192" key="run.anything.popup" timestamp="1602092244699">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
@@ -104,7 +154,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/src/index.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

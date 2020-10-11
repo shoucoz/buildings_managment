@@ -1,16 +1,12 @@
 import React from "react";
 import history from '../../utils'
-import { v4 as uuidv4 } from 'uuid';
-import {HOST} from "../../confing";
 import UserForm from "../../components/form/UserForm";
-const axios = require('axios');
+import api from "../../api";
+
 
 
 const onSubmit = values => {
-    axios.post(`${HOST}/createuser`, {
-        id: uuidv4(),
-        ...values
-    })
+    api.User.createUser(values)
         .then(function (response) {
             history.push('/users')
         })

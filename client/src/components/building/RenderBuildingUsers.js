@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from "react";
-import {HOST} from "../../confing";
-const axios = require('axios');
+import api from "../../api";
 
 
 const RenderBuildingUsers = ({id}) => {
     const [state, setState] = useState([])
 
     useEffect(() => {
-        axios.get(`${HOST}/usersinbuilding/${id}`).then(res => {
+        api.User.getUsersInBuilding(id).then(res => {
             setState(res.data)
         })
     },[])

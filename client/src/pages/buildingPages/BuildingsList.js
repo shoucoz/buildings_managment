@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import RenderList from "../../components/RenderList";
-import {HOST} from "../../confing";
 import BuildingComponent from "../../components/building/BuildingsComponent";
 import Loader from "../../components/Loader";
 import {builingFilter} from "../../utils";
-
-const axios = require('axios');
-
+import api from "../../api";
 
 const BuildingList = () => {
     const [state, setState] = useState({
@@ -16,7 +13,7 @@ const BuildingList = () => {
     })
 
     useEffect(()=> {
-        axios.get(`${HOST}/buildings`).then(res => setState({
+        api.Building.getBuildings().then(res => setState({
             data: res.data,
             loading: false
         }))

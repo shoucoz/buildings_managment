@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
+console.log(process.env.DEV, ' development mode')
 
-const sequelize = new Sequelize("test_buildings", "root", "sqlpass1234", {
+export const sequelize = new Sequelize(`${process.env.DEV === 'true' ? 'test_buildings' : 'test_buildings_test'}`, "root", "sqlpass1234", {
     dialect: "mysql",
     host: "localhost",
     define: {
@@ -83,11 +84,11 @@ export const Company = sequelize.define("company", {
 const BuildingsAndCompanies = sequelize.define('bacs', {
     buildingId: {
         type: Sequelize.UUIDV4,
-        allowNull: false
+        allowNull: true
     },
     companyId: {
         type: Sequelize.UUIDV4,
-        allowNull: false
+        allowNull: true
     },
 });
 

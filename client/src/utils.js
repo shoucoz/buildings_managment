@@ -1,3 +1,5 @@
+import {HOST} from "./confing";
+
 const axios = require('axios')
 
 const createHistory =  require("history").createBrowserHistory;
@@ -13,7 +15,7 @@ export function builingFilter(data, value) {
 
 export function deleteHandler(event, endpoint, redirect) {
     event.preventDefault();
-    axios.delete(endpoint)
+    axios.delete(`${HOST}${endpoint}`)
         .then(_ => {
             redirect()
         })

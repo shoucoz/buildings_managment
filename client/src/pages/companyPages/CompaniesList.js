@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import RenderList from "../../components/RenderList";
-import {HOST} from "../../confing";
 import CompanyComponent from "../../components/company/CompanyComponent";
 import Loader from "../../components/Loader";
 import {builingFilter} from "../../utils";
-
-const axios = require('axios');
+import api from "../../api";
 
 
 const CompaniesList = () => {
@@ -16,7 +14,7 @@ const CompaniesList = () => {
     })
 
     useEffect(()=> {
-        axios.get(`${HOST}/companies`).then(res => setState({
+        api.Company.getCompanies().then(res => setState({
             data: res.data,
             filteredData: res.data,
             loading: false

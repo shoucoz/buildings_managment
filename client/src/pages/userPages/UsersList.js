@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import RenderList from "../../components/RenderList";
-import {HOST} from "../../confing";
 import UserComponent from "../../components/user/UserComponent";
 import Loader from "../../components/Loader";
 import {userFilter} from "../../utils";
+import api from "../../api";
 
-const axios = require('axios');
 
 
 const UsersList = () => {
@@ -16,7 +15,7 @@ const UsersList = () => {
     })
 
     useEffect(()=> {
-        axios.get(`${HOST}/users`).then(res => setState({
+        api.User.getUsers().then(res => setState({
             data: res.data,
             filteredData: res.data,
             loading: false

@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import {HOST} from "../../confing";
 import Paginations from "../Paginations";
 import FilterSelect from "../FilterSelect";
-const axios = require('axios');
+import api from "../../api";
 
 
 const RenderCompanyUsers= ({match, endpoint, title, location}) => {
@@ -11,7 +10,7 @@ const RenderCompanyUsers= ({match, endpoint, title, location}) => {
     })
 
     useEffect(() => {
-        axios.get(`${HOST}/${endpoint}/${match.params.id}${location.search}`).then(res => {
+        api.User.getFilteredUsers(endpoint, match.params.id, location.search).then(res => {
             setState(res.data)
         })
     },[match])

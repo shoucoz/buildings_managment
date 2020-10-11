@@ -16,9 +16,9 @@ export const getCompanies = (req: any, res: any) => {
 
 export const getCompanyBuildings = (req: any, res: any) => {
     Company.findOne({where: {id: req.params.companyId}})
-        .then((company: any)=>{
-            if(!company) return;
-            company.getBuildings().then((buildings: any)=>{
+        .then((company: any) => {
+            if(!company) { return; }
+            company.getBuildings().then((buildings: any) => {
                 res.send(buildings)
             });
         });
@@ -26,12 +26,12 @@ export const getCompanyBuildings = (req: any, res: any) => {
 
 
 export const createCompany = (req: any, res: any) => {
-    Company.create({...req.body}).then((_: any) => {
+    Company.create({...req.body}).then((response: any) => {
         Company.findOne({where: {id: req.body.id}}).then((company: any) => {
             if(!company) return;
             company.setBuildings(req.body.buildingId)
         }).then((_: any) => {
-            res.send('Succes')
+            res.send(response)
         })
     }).catch((err: any)=> {
         throw err;

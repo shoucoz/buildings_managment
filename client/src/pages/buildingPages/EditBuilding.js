@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import history, {deleteHandler} from '../../utils'
-import {HOST} from "../../confing";
 import BuidlingForm from "../../components/form/BuildingForm";
 import RenderBuildingUsers from "../../components/building/RenderBuildingUsers";
-const axios = require('axios');
+import api from "../../api";
 
 
 
@@ -16,7 +15,7 @@ const EditBuilding = ({match}) => {
     })
 
     useEffect(()=> {
-        axios.get(`${HOST}/buildings/${match.params.id}`).then(res => {
+       api.Building.getBuilding(match.params.id).then(res => {
             const data = res.data;
             data.companyId = data.companyId.map(item => item.id)
             setState({
@@ -30,7 +29,7 @@ const EditBuilding = ({match}) => {
     const redirect = () =>  history.push('/buildings')
 
     const onSubmit = values => {
-        axios.put(`${HOST}/editbuilding/${match.params.id}`, values).then(_ => {
+        api.Building.editBuilding(match.params.id, values).then(_ => {
             redirect()
         }).catch(function (error) {
             console.log(error);
@@ -41,7 +40,7 @@ const EditBuilding = ({match}) => {
         <>
     <BuidlingForm
         title={`Edit building ${state.data.name}`}
-        deleteHandler={(event) => deleteHandler(event, `${HOST}/deletebuilding/${match.params.id}`, redirect)}
+        deleteHandler={(event) => deleteHandler(event, `/deletebuilding/${match.params.id}`, redirect)}
         onSubmit={onSubmit}
         initialValues={{...state.data}}
 />

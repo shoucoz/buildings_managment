@@ -1,16 +1,11 @@
 import React from "react";
 import history from '../../utils'
-import { v4 as uuidv4 } from 'uuid';
-import {HOST} from "../../confing";
 import BuidlingForm from "../../components/form/BuildingForm";
-const axios = require('axios');
+import api from "../../api";
 
 
 const onSubmit = values => {
-    axios.post(`${HOST}/createbuilding`, {
-        id: uuidv4(),
-        ...values
-    })
+        api.Building.createBuilding(values)
         .then(function (response) {
             history.push('/buildings')
         })
