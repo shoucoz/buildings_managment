@@ -19,7 +19,7 @@ router.post("/createuser", createUser);
 
 router.put("/useredit/:id", editUser);
 
-router.delete("/userdelete/:id", deleteUser);
+router.delete("/deleteuser/:id", deleteUser);
 
 router.get("/usersinbuilding/:id", getUsersFromBuilding);
 

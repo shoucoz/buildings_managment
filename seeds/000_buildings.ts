@@ -14,13 +14,6 @@ export async function seed(knex: Knex): Promise<void> {
             address: "address 1",
             country: 'country 1',
             locale: 'locale 1'
-        },
-        {
-            id: defaultUuids.buildingId2,
-            name: "Building 2",
-            address: "address 2",
-            country: 'country 2',
-            locale: 'locale 2'
         }
     ]);
 };

@@ -34,7 +34,7 @@ const UserEdit = ({match}) => {
                 title={`Edit user ${state.data.first_name}`}
                 onSubmit={onSubmit}
                 initialValues={state.data}
-                deleteHandler={(event) => deleteHandler(event,`/userdelete/${match.params.id}`, redirect)} />
+                deleteHandler={(event) => deleteHandler(event,`/deleteuser/${match.params.id}`, redirect)} />
     )
 }
 

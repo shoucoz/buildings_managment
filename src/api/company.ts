@@ -22,8 +22,6 @@ router.post("/uploadcompanyimage", uploadLogo);
 
 router.put("/editcompany/:companyId", editCompany);
 
-router.get("/companies/:id", getCompany);
-
 router.delete("/deletecompany/:id", deleteCompany);
 
 module.exports = router;

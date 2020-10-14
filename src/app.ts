@@ -13,8 +13,7 @@ app.use(cors());
 api(app);
 
 // @ts-ignore
-
-const server = app.listen(5000, async function(err: string): void {
+const server = app.listen(5000, async (err: string): void => {
     if (err) {
         console.log(err);
     }

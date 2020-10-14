@@ -9,7 +9,6 @@ const onSubmit = values => {
     } = values;
     api.Company.createCompany(values, logo)
         .then(function (response) {
-            console.log(response, ' response')
             api.Company.uploadLogo(logo).then(_ => {
                 history.push('/companies')
             }).catch(function (error) {

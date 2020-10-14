@@ -5,11 +5,13 @@
   "main": "dist/src/app.js",
   "scripts": {
     "start": "tsc && DEV=true node dist/src/app.js",
-    "test": "jest",
+    "test": "jest --coverage --runInBand",
     "migrateDev": "knex migrate:latest",
     "migrateStage": "knex migrate:latest --env staging",
+    "seedStage": "knex seed:run --env staging",
     "seed": "knex seed:run",
-    "migrateStageRollback" : "knex migrate:rollback  --env staging"
+    "migrateStageRollback" : "knex migrate:rollback  --env staging",
+    "pretest" : "npm run migrateStageRollback && npm run migrateStage"
   },
   "author": "",
   "license": "ISC",

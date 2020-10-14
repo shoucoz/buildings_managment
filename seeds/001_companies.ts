@@ -11,11 +11,6 @@ export async function seed(knex: Knex): Promise<void> {
             id: defaultUuids.companyId,
             name: "Company name 1",
             logo: "logo address 1",
-        },
-        {
-            id: defaultUuids.companyId2,
-            name: "Company name 2",
-            logo: "logo address 2",
         }
     ]);
 };
