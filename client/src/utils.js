@@ -23,3 +23,8 @@ export function deleteHandler(event, endpoint, redirect) {
             console.log(error);
         });
 }
+
+//
+// export function accessForUser(accessUsers) {
+//     const currentUser = window.localStorage.getItem('user')
+// }

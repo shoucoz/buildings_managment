@@ -10,16 +10,18 @@
     "migrateStage": "knex migrate:latest --env staging",
     "seedStage": "knex seed:run --env staging",
     "seed": "knex seed:run",
-    "migrateStageRollback" : "knex migrate:rollback  --env staging",
-    "pretest" : "npm run migrateStageRollback && npm run migrateStage"
+    "migrateStageRollback": "knex migrate:rollback  --env staging",
+    "pretest": "npm run migrateStageRollback && npm run migrateStage"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.16.1",
+    "@types/express-fileupload": "^1.1.5",
     "@types/jest": "^26.0.14",
     "@types/uuid": "^8.3.0",
     "jest": "^26.5.3",
+    "sequelize-typescript": "^1.1.0",
     "supertest": "^5.0.0",
     "ts-jest": "^26.4.1",
     "tslint": "^5.12.1",

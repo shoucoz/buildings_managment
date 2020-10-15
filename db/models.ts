@@ -1,4 +1,5 @@
-const Sequelize = require("sequelize");
+// const Sequelize = require("sequelize");
+import { BuildOptions, DataTypes, Model, Sequelize } from "sequelize";
 
 export const sequelize = new Sequelize(`${process.env.DEV === 'true' ? 'test_buildings' : 'test_buildings_test'}`, "root", "sqlpass1234", {
     dialect: "mysql",
@@ -11,85 +12,86 @@ export const sequelize = new Sequelize(`${process.env.DEV === 'true' ? 'test_bui
 
 export const User = sequelize.define("user", {
     id: {
-        type: Sequelize.UUIDV4,
+        type: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false
     },
     first_name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     last_name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     building_company: {
-        type: Sequelize.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         allowNull: true
     },
     buildingId: {
-        type: Sequelize.UUIDV4,
+        type: DataTypes.UUIDV4,
         allowNull: true
     },
     companyId: {
-        type: Sequelize.UUIDV4,
+        type: DataTypes.UUIDV4,
         allowNull: true
     },
-    created_at: Sequelize.DATE,
+    created_at: DataTypes.DATE,
 });
 
 export const Building = sequelize.define("building", {
     id: {
-        type: Sequelize.UUIDV4,
+        type: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false
     },
     name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     address: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     country: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     locale: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
-    created_at: Sequelize.DATE,
+    created_at: DataTypes.DATE,
 });
 
 export const Company = sequelize.define("company", {
     id: {
-        type: Sequelize.UUIDV4,
+        type: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false
     },
     name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     logo: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
-    created_at: Sequelize.DATE,
+    created_at: DataTypes.DATE,
 });
 
 export const BuildingsAndCompanies = sequelize.define('bacs', {
     buildingId: {
-        type: Sequelize.UUIDV4,
+        type: DataTypes.UUIDV4,
         allowNull: true
     },
     companyId: {
-        type: Sequelize.UUIDV4,
+        type: DataTypes.UUIDV4,
         allowNull: true
     },
 });
+
 
 Company.belongsToMany(Building, {through: BuildingsAndCompanies});
 Building.belongsToMany(Company, {through: BuildingsAndCompanies});

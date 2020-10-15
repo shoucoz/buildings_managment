@@ -1,5 +1,6 @@
 import {Building} from "../db/models";
 import {removeUserReference} from "./user";
+import { Request, Response } from "express";
 
 const removeBuildingFromCompany = (buildingElem: any, id: string) => {
     return buildingElem.getCompanies().then(async (companies: any) => {
@@ -9,24 +10,24 @@ const removeBuildingFromCompany = (buildingElem: any, id: string) => {
     });
 };
 
-export const getBuildings = (req: any, res: any) => {
-    Building.findAll().then((buildings: any) => res.send(buildings));
+export const getBuildings = (req: Request, res: Response) => {
+    Building.findAll().then((buildings: object) => res.send(buildings));
 };
 
-export const createBuilding = (req: any, res: any) => {
+export const createBuilding = (req: Request, res: Response) => {
     Building.create({...req.body}).then((response: any) => {
         Building.findOne({where: {id: req.body.id}}).then((building: any) => {
             if (!building) { return; }
             building.setCompanies(req.body.companyId);
-        }).then((result: any) => {
+        }).then((_: void) => {
             res.send(response);
         });
-    }).catch((err: any) => {
+    }).catch((err: object) => {
         throw err;
     });
 };
 
-export const getBuilding = (req: any, res: any) => {
+export const getBuilding = (req: Request, res: Response) => {
     Building.findOne({where: { id: req.params.id}}).then((building: any) => {
         building.getCompanies().then((companies: any) => {
             res.send({
@@ -34,43 +35,43 @@ export const getBuilding = (req: any, res: any) => {
                 companyId: companies,
             });
         })
-            .catch((err: any) => {
+            .catch((err: object) => {
                 throw err;
             });
     });
 };
 
-export const editBuilding = (req: any, res: any) => {
+export const editBuilding = (req: Request, res: Response) => {
     Building.update(req.body, {where: {id: req.body.id}}).then((response: any) => {
         Building.findOne({where: {id: req.body.id}}).then((buildingElem: any) => {
             if (!buildingElem) { return; }
             removeBuildingFromCompany(buildingElem, req.body.id)
-            .then((_: any) => {
+            .then((_: void) => {
                 buildingElem.setCompanies(req.body.companyId);
             });
-        }).then((_: any) => res.send(response)).catch((err: any) => {
+        }).then((_: void) => res.send(response)).catch((err: object) => {
             throw err;
         });
-    }).catch((err: any) => {
+    }).catch((err: object) => {
         throw err;
     });
 };
 
-export const deleteBuilding = (req: any, res: any) => {
+export const deleteBuilding = (req: Request, res: Response) => {
     const {params: {id}} = req;
     Building.findOne({where: {id}}).then((buildingElem: any) => {
         if (!buildingElem) { return; }
-        removeBuildingFromCompany(buildingElem, id).then((_: any) => {
+        removeBuildingFromCompany(buildingElem, id).then((_: void) => {
             removeUserReference({buildingId: id}, {buildingId: null})
-            .then((_: any) => {
-                Building.destroy({where: {id}}).then((_: any) => {
+            .then(() => {
+                Building.destroy({where: {id}}).then(() => {
                     res.send("Success");
                 }).catch((err: any) => {
                     throw err;
                 });
             });
         });
-    }).then((_: any) => res.send("Succes")).catch((err: any) => {
+    }).then((_: void) => res.send("Succes")).catch((err: object) => {
         throw err;
     });
 };

@@ -22,6 +22,7 @@ const ROUTES = [
         path: "/users",
         key: "users",
         exact: true,
+        forRoles: ['internal_admin'],
         component: (props) => <UsersList {...props} />,
     },
     {

@@ -12,8 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ce5b8b13-39fb-4b54-9a6f-a8451b7f7992" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/building.ts" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/building.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/company.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +45,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/tests" />
       <recent name="$PROJECT_DIR$/tests" />
@@ -70,7 +73,8 @@
       <workItem from="1602497473388" duration="9336000" />
       <workItem from="1602581615583" duration="16338000" />
       <workItem from="1602618472172" duration="6015000" />
-      <workItem from="1602628292173" duration="26455000" />
+      <workItem from="1602628292173" duration="27309000" />
+      <workItem from="1602757221840" duration="18921000" />
     </task>
     <servers />
   </component>

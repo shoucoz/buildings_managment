@@ -1,47 +1,49 @@
 import {Company} from "../db/models";
+import { Request, Response } from "express";
 import {removeUserReference} from "./user";
+//
 
 const removeCompanyFromBuilding = (company: any, id: string) => {
-    return  company.getBuildings().then(async (buildings: any) => {
+    return  company.getBuildings().then(async (buildings: any[]) => {
         for (const building of buildings) {
             await building.removeCompany(id);
         }
     });
 };
 
-export const getCompanies = (req: any, res: any) => {
-    Company.findAll().then((companies: any) => res.send(companies));
+export const getCompanies = (req: Request, res: Response) => {
+    Company.findAll().then((companies: object) => res.send(companies));
 };
 
-export const getCompanyBuildings = (req: any, res: any) => {
+export const getCompanyBuildings = (req: Request, res: Response) => {
     Company.findOne({where: {id: req.params.companyId}})
         .then((company: any) => {
             if (!company) { return; }
-            company.getBuildings().then((buildings: any) => {
+            company.getBuildings().then((buildings: object) => {
                 res.send(buildings);
             });
         });
 };
 
-export const createCompany = (req: any, res: any) => {
-    Company.create({...req.body}).then((response: any) => {
+export const createCompany = (req: Request, res: Response) => {
+    Company.create({...req.body}).then((response: object) => {
         Company.findOne({where: {id: req.body.id}}).then((company: any) => {
             if (!company) { return; }
             company.setBuildings(req.body.buildingId);
-        }).then((_: any) => {
+        }).then((_: void) => {
             res.send(response);
         });
-    }).catch((err: any) => {
+    }).catch((err: object) => {
         throw err;
     });
 };
 
-export const uploadLogo = (req: any, res: any) => {
+export const uploadLogo = (req: Request, res: Response) => {
     if (!req.files) {
         return res.status(500).send({ msg: "file is not found" });
     }
     const myFile = req.files.file;
-    myFile.mv(`${process.cwd()}/client/public/${myFile.name}`, function(err: any) {
+    myFile.mv(`${process.cwd()}/client/public/${myFile.name}`, (err: object) => {
         if (err) {
             console.log(err);
             return res.status(500).send({ msg: "Error occured" });
@@ -50,9 +52,9 @@ export const uploadLogo = (req: any, res: any) => {
     });
 };
 
-export const getCompany = (req: any, res: any) => {
+export const getCompany = (req: Request, res: Response) => {
     Company.findOne({where: { id: req.params.id}}).then((company: any) => {
-        company.getBuildings().then((buildings: any) => {
+        company.getBuildings().then((buildings: object) => {
             res.send({
                 ...company.dataValues,
                 buildingId: buildings,
@@ -64,37 +66,37 @@ export const getCompany = (req: any, res: any) => {
     });
 };
 
-export const editCompany = (req: any, res: any) => {
+export const editCompany = (req: Request, res: Response) => {
     const {params: {id}} = req;
-    Company.update(req.body, {where: {id: req.body.id}}).then((result: any) => {
+    Company.update(req.body, {where: {id: req.body.id}}).then((result: object) => {
         Company.findOne({where: {id: req.body.id}}).then((company: any) => {
             if (!company) { return; }
-            removeCompanyFromBuilding(company, id).then((_: any) => {
+            removeCompanyFromBuilding(company, id).then((_: object) => {
                 company.setBuildings(req.body.buildingId);
             });
-        }).then((_: any) => res.send(result)).catch((err: any) => {
+        }).then((_: void) => res.send(result)).catch((err: object) => {
             throw err;
         });
-    }).catch((err: any) => {
+    }).catch((err: object) => {
         throw err;
     });
 };
 
-export const deleteCompany = (req: any, res: any) => {
+export const deleteCompany = (req: Request, res: Response) => {
     const {params: {id}} = req;
     Company.findOne({where: {id}}).then((company: any) => {
         if (!company) { return; }
-        removeCompanyFromBuilding(company, id).then((_: any) => {
+        removeCompanyFromBuilding(company, id).then((_: object) => {
             removeUserReference({companyId: id}, {companyId: null})
-            .then((_: any) => {
-                Company.destroy({where: {id}}).then((result: any) => {
+            .then(() => {
+                Company.destroy({where: {id}}).then(() => {
                     res.send("Success");
-                }).catch((err: any) => {
+                }).catch((err: object) => {
                     throw err;
                 });
             });
         });
-    }).then((_: any) => res.send("Succes")).catch((err: any) => {
+    }).then((_: void) => res.send("Succes")).catch((err: object) => {
         throw err;
     });
 };
