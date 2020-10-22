@@ -11,55 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce5b8b13-39fb-4b54-9a6f-a8451b7f7992" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/CompanyTabs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/LogOut.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/form/BuildingsForUserForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/user/FreeWorkersList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Registration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/roles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/validations/buildingsForUserValidation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/validations/loginValidation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/validations/registrationValidation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware/passport.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/company/RenderCompanyUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/company/RenderCompanyUsers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/form/BuildingForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/form/BuildingForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/form/CompanyForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/form/CompanyForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/form/RenderSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/form/RenderSelect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/form/UserForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/form/UserForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/confing.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/confing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/buildingPages/EditBuilding.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/buildingPages/EditBuilding.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/companyPages/EditCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/companyPages/EditCompany.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/userPages/NewUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/userPages/NewUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/userPages/UserEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/userPages/UserEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/validations/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/validations/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/validations/userValidations.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/validations/userValidations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db/models.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/002_users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/002_users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeds/002_users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/seeds/002_users.tss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/building.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/building.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/company.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/1_company.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/1_company.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/2_building.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/2_building.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/3_companies_and_building.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/3_companies_and_building.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/4_user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/4_user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/5_delete.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/5_delete.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/index.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/index.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeds/002_users.tss" beforeDir="false" afterPath="$PROJECT_DIR$/seeds/002_users.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +73,7 @@
       <workItem from="1602628292173" duration="27309000" />
       <workItem from="1602757221840" duration="44575000" />
       <workItem from="1603106732935" duration="9057000" />
-      <workItem from="1603199802464" duration="41806000" />
+      <workItem from="1603199802464" duration="42182000" />
     </task>
     <servers />
   </component>
