@@ -5,7 +5,7 @@ import FormInput from "../../components/form/FormInput";
 import {companyValidations} from "../../validations";
 
 
-const CompanyForm = ({title, onSubmit, initialValues, deleteHandler}) => {
+const CompanyForm = ({title, onSubmit, initialValues, deleteHandler, role}) => {
     const [hide, toggleVisible] = useState(() => deleteHandler)
 
     const showFileInput = (clearLogo, setNewLogo) => {
@@ -88,7 +88,7 @@ const CompanyForm = ({title, onSubmit, initialValues, deleteHandler}) => {
                             Submit
                         </button>
                         {
-                           deleteHandler && ( <button onClick={deleteHandler} className='btn btn-danger'>
+                           deleteHandler && role === 'internal_admin' && ( <button onClick={deleteHandler} className='btn btn-danger'>
                                 Delete
                             </button> )
                         }

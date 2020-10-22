@@ -36,6 +36,16 @@ code {
   margin-bottom: 20px;
 }
 
+
+.list-item--between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-item--between .form-group {
+  margin: 0 10px 0;
+}
+
 .red-text {
   font-weight: bold;
   color: red;
@@ -59,3 +69,9 @@ code {
   justify-content: space-between;
   margin: 40px 0;
 }
+
+.tabs-wrapper {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+

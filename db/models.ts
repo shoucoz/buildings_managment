@@ -24,6 +24,22 @@ export const User = sequelize.define("user", {
         type: DataTypes.STRING,
         allowNull: false
     },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    mail: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    mail_confirmed: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
+    },
+    role: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     building_company: {
         type: DataTypes.BOOLEAN,
         allowNull: true

@@ -2,27 +2,37 @@ import {
     createUser,
     deleteUser,
     editUser,
+    getFreeUsers,
     getUser,
     getUsers,
     getUsersFromBuilding,
     getUsersFromCompany,
+    login,
+    mailVerification,
 } from "../../controllers/user";
 
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 
-router.get("/users", getUsers);
+router.get("/users", passport.authenticate("jwt", {session: false}) , getUsers);
 
-router.get("/users/:id", getUser);
+router.get("/freeusers", passport.authenticate("jwt", {session: false}) , getFreeUsers);
 
-router.post("/createuser", createUser);
+router.get("/users/:id", passport.authenticate("jwt", {session: false}) , getUser);
 
-router.put("/useredit/:id", editUser);
+router.post("/createuser" , createUser);
 
-router.delete("/deleteuser/:id", deleteUser);
+router.put("/useredit/:id", passport.authenticate("jwt", {session: false}) , editUser);
 
-router.get("/usersinbuilding/:id", getUsersFromBuilding);
+router.delete("/deleteuser/:id", passport.authenticate("jwt", {session: false}) , deleteUser);
 
-router.get("/usersincompany/:id", getUsersFromCompany);
+router.get("/usersinbuilding/:id", passport.authenticate("jwt", {session: false}) , getUsersFromBuilding);
+
+router.get("/usersincompany/:id", passport.authenticate("jwt", {session: false}) , getUsersFromCompany);
+
+router.post("/login", login);
+
+router.get("/verify/:id", mailVerification);
 
 module.exports = router;

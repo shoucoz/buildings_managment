@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
+import {ContextApp} from '../../reducers'
 import history, {deleteHandler} from '../../utils'
 import BuidlingForm from "../../components/form/BuildingForm";
 import RenderBuildingUsers from "../../components/building/RenderBuildingUsers";
@@ -25,12 +26,15 @@ const EditBuilding = ({match}) => {
         })
     },[])
 
+    const {store} = useContext(ContextApp);
 
     const redirect = () =>  history.push('/buildings')
 
     const onSubmit = values => {
         api.Building.editBuilding(match.params.id, values).then(_ => {
-            redirect()
+            if(store.role === 'internal_admin') {
+                history.push('/buildings')
+            }
         }).catch(function (error) {
             console.log(error);
         });
@@ -40,9 +44,10 @@ const EditBuilding = ({match}) => {
         <>
     <BuidlingForm
         title={`Edit building ${state.data.name}`}
-        deleteHandler={(event) => deleteHandler(event, `/deletebuilding/${match.params.id}`, redirect)}
+        deleteHandler={(event) => deleteHandler(event, `/api/deletebuilding/${match.params.id}`, redirect)}
         onSubmit={onSubmit}
         initialValues={{...state.data}}
+        role={store.role}
 />
     <RenderBuildingUsers id={match.params.id}  />
 </>

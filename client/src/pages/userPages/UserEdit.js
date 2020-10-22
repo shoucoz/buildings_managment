@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import UserForm from "../../components/form/UserForm";
-import history, {deleteHandler} from "../../utils";
+import history, {deleteHandler, isRole} from "../../utils";
 import api from "../../api";
+import {ContextApp} from "../../reducers";
+import {FORM_ERROR} from "final-form";
 
 
 const UserEdit = ({match}) => {
@@ -17,15 +19,23 @@ const UserEdit = ({match}) => {
         }))
     },[])
 
+    const {store} = useContext(ContextApp);
+
     const redirect = () =>  history.push('/users')
 
     const onSubmit = values => {
-        api.User.editUser(match.params.id, values).then(_ => {
-            redirect()
+        return api.User.editUser(match.params.id, values).then(response => {
+            if(response.data.error) {
+                return { [FORM_ERROR]: 'Username is exists' }
+            }
+            if(store.role ==='internal_admin') {
+                redirect()
+            }
         }).catch(function (error) {
             console.log(error);
         });
     }
+
 
     return (
         state.loading ?
@@ -34,7 +44,8 @@ const UserEdit = ({match}) => {
                 title={`Edit user ${state.data.first_name}`}
                 onSubmit={onSubmit}
                 initialValues={state.data}
-                deleteHandler={(event) => deleteHandler(event,`/deleteuser/${match.params.id}`, redirect)} />
+                role={store.role}
+                deleteHandler={(event) => deleteHandler(event,`/api/deleteuser/${match.params.id}`, redirect)} />
     )
 }
 

@@ -11,8 +11,8 @@ afterAll(async () => {
     await server.close();
 });
 
-describe("Company Endpoints", companyEndpoins);
-describe("Building Endpoints", buildingEndpoints);
+describe("Company Endpoints without token", companyEndpoins);
+describe("Building Endpoints without token", buildingEndpoints);
 describe("Company Endpoints with Buildings", companyWithBuildings);
 describe("User Endpoints", userEndpoints);
 describe("Delete Endpoints", deleteEndpoins);

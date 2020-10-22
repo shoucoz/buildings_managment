@@ -24,7 +24,22 @@ export function deleteHandler(event, endpoint, redirect) {
         });
 }
 
-//
-// export function accessForUser(accessUsers) {
-//     const currentUser = window.localStorage.getItem('user')
-// }
+
+export function filteredRoutes(role, routes) {
+    return routes.filter(item => item.accessRoles.indexOf(role) !== -1)
+}
+
+export function isRole(role) {
+    return window.localStorage.getItem('role') === role;
+}
+
+export function setRoleAndToken(role, token) {
+    axios.defaults.headers.common['Authorization'] = token;
+    window.localStorage.setItem('role', role)
+    window.localStorage.setItem('token', token)
+}
+
+export function removeRoleAndToken() {
+    window.localStorage.removeItem('role')
+    window.localStorage.removeItem('token')
+}

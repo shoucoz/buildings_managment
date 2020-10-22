@@ -4,7 +4,7 @@ import RenderSelect from "../../components/form/RenderSelect";
 import FormInput from "../../components/form/FormInput";
 import {buildingValidation} from "../../validations";
 
-const BuidlingForm = ({title, onSubmit, initialValues, deleteHandler}) => (
+const BuidlingForm = ({title, onSubmit, initialValues, deleteHandler, role}) => (
     <>
         <h1>{title}</h1>
         <Form
@@ -43,29 +43,31 @@ const BuidlingForm = ({title, onSubmit, initialValues, deleteHandler}) => (
                             type={"text"}
                         />
                     </div>
-                    <div className={'form-group'}>
-                        <label>Companies in Building</label>
-                        <Field name="companyId" type='select'>
-                            { ({input, meta}) => {
-                                return (
-                                    <RenderSelect
-                                        category={'companies'}
-                                        input={input}
-                                        meta={meta}
-                                        multiple
-                                        onChange={ (value) => input.onChange(value)}
-                                    />
-                                )
-                            }}
-                        </Field>
-                    </div>
+                    {
+                       role !== 'building_manager' && (<div className={'form-group'}>
+                            <label>Companies in Building</label>
+                            <Field name="companyId" type='select'>
+                                { ({input, meta}) => {
+                                    return (
+                                        <RenderSelect
+                                            category={'companies'}
+                                            input={input}
+                                            meta={meta}
+                                            multiple
+                                            onChange={ (value) => input.onChange(value)}
+                                        />
+                                    )
+                                }}
+                            </Field>
+                        </div>)
+                    }
 
                     <div className="buttons">
                         <button className='btn btn-primary' type="submit">
                             Submit
                         </button>
                         {
-                           deleteHandler && ( <button onClick={deleteHandler} className='btn btn-danger'>
+                            (deleteHandler && role ==='internal_admin') && ( <button onClick={deleteHandler} className='btn btn-danger'>
                                 Delete
                             </button> )
                         }

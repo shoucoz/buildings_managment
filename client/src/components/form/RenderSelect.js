@@ -3,14 +3,18 @@ import {HOST} from "../../confing";
 const axios = require('axios');
 
 
-const RenderSelect = ({category, onChange, meta, referenceId, input, multiple}) => {
+const RenderSelect = ({category, onChange, meta, referenceId, input, multiple, data}) => {
     const [state, setState] = useState([])
 
     useEffect(() => {
-        let url = referenceId ? `${HOST}/${category}/${referenceId}` : `${HOST}/${category}`;
-        axios.get(url).then(res => setState({
-            data: res.data,
-        }))
+        if(data) {
+            setState({data:data})
+        } else {
+            let url = referenceId ? `${HOST}/api/${category}/${referenceId}` : `${HOST}/api/${category}`;
+            axios.get(url).then(res => setState({
+                data: res.data,
+            }))
+        }
     } ,[referenceId])
 
 

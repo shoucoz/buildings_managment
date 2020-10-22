@@ -1,5 +1,36 @@
 import {User} from "../db/models";
 import { Request, Response } from 'express';
+import {tokenSecret} from '../config';
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+
+
+const sendVerificationMail = (req: any) => {
+    const smtpTransport = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            user: "mail@gmail.com",
+            pass: "password"
+        }
+    });
+    const link = `http://${req.get("host")}/api/verify/${req.body.id}`;
+
+    const mailOptions = {
+        to : req.body.mail,
+        subject : "Please confirm your Email account",
+        html : `Hello,<br> Please Click on the link to verify your email.<br>
+                <a href="${link}">Click here to verify</a>`
+    }
+
+    smtpTransport.sendMail(mailOptions, (err: object, res: object) => {
+        if(err) {
+            console.log(err, ' error')
+        }
+    })
+
+
+}
 
 
 export const getUsers = (req: Request, res: Response) => {
@@ -7,6 +38,13 @@ export const getUsers = (req: Request, res: Response) => {
         res.send(users)
     })
 };
+
+export const getFreeUsers = (req: Request, res: Response) => {
+    User.findAll({where: {building_company: false}}).then((users: object) => {
+        res.send(users)
+    })
+};
+
 
 export const getUser = (req: Request, res: Response) => {
     User.findByPk(req.params.id)
@@ -18,18 +56,35 @@ export const getUser = (req: Request, res: Response) => {
 };
 
 export const createUser = (req: Request, res: Response) => {
-    User.create({...req.body}).then((response: object) => {
-        res.send(response);
-    }).catch((err: object) => {
-        throw err;
-    });
+    User.findOne({where: {first_name: req.body.first_name}})
+        .then((user ) => {
+            if (!user) {
+                const saltRounds = 10;
+                const password = req.body.password;
+                bcrypt.hash(password, saltRounds, (err: object, hash: string) => {
+                    User.create({...req.body, password: hash}).then((response: object) => {
+                        sendVerificationMail(req);
+                        res.send(response);
+                    }).catch((err: object) => {
+                        throw err;
+                    });
+                });
+            } else {
+                res.send( {error: "Username exist!" });
+            }
+        })
+        .catch((err: object) => console.log(err));
 };
 
 export const editUser = (req: Request, res: Response) => {
-    User.update(req.body, {where: {id: req.body.id}}).then((response: object) => {
-        res.send(response);
-    }).catch((err: object) => {
-        throw err;
+    const saltRounds = 10;
+    const password = req.body.password;
+    bcrypt.hash(password, saltRounds, (err: object, hash: string) => {
+        User.update({...req.body, password: hash}, {where: {id: req.body.id}}).then((response: object) => {
+            res.send(response);
+        }).catch((err: object) => {
+            throw err;
+        });
     });
 };
 
@@ -78,3 +133,49 @@ export const removeUserReference = (condition: object, newField: object) => {
         }
     });
 };
+
+export const login = (req: Request, res: Response) => {
+    const {
+        first_name,
+    } = req.body
+
+
+    User.findOne({where: {first_name}}).then((user: any) => {
+        if(!user) {
+            res.send( {error: "Incorrect login or password!" });
+        }
+        if(user.mail_confirmed || user.role === 'internal_admin') {
+            bcrypt.compare(req.body.password, user.password, (err:object, result:object) => {
+                if(result) {
+                    const token = jwt.sign({
+                        first_name,
+                        id: user.id,
+                        role: user.role
+                    }, tokenSecret, {expiresIn: 60 * 60})
+                    res.send({
+                        user,
+                        token: `Bearer ${token}`
+                    })
+                } else {
+                    res.send( {error: "Incorrect login or password!" });
+                }
+            });
+        } else {
+            res.send( {error: "Please confirmed your email!!!" });
+        }
+    })
+}
+
+
+export const mailVerification = (req: Request, res: Response) => {
+    User.findByPk(req.params.id)
+        .then((user ) => {
+            if (!user) { return; }
+            user.update( {mail_confirmed: true}).then((response: object) => {
+                res.send("Succes verification")
+            }).catch((err: object) => {
+                throw err;
+            });
+        })
+        .catch((err: object) => console.log(err));
+}

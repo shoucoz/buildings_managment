@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import CompanyForm from "../../components/form/CompanyForm";
 import history, {deleteHandler} from '../../utils'
-import RenderCompanyUsers from "../../components/company/RenderCompanyUsers";
+import CompanyTabs from "../../components/CompanyTabs";
 import api from "../../api";
+import {ContextApp} from "../../reducers";
 
 
 const EditCompany = ({match, location}) => {
@@ -10,13 +11,15 @@ const EditCompany = ({match, location}) => {
     const [state, setState] = useState({
         loading: true,
         data: {
-            buildingId: []
+            buildingId: [],
+            buildingList: []
         }
     })
 
     useEffect(()=> {
         api.Company.getCompany(match.params.id).then(res => {
             const data = res.data;
+            data.buildingList = data.buildingId;
             data.buildingId = data.buildingId.map(item => item.id);
             setState({
                 data,
@@ -25,6 +28,7 @@ const EditCompany = ({match, location}) => {
         })
     },[])
 
+    const {store} = useContext(ContextApp);
 
     const redirect = () =>  history.push('/companies')
 
@@ -38,12 +42,16 @@ const EditCompany = ({match, location}) => {
         .then(_ => {
             if(newlogo) {
                 api.Company.uploadLogo(logo).then(_ => {
-                    redirect()
+                    if(store.role === 'internal_admin') {
+                        redirect()
+                    }
                 }).catch(function (error) {
                     console.log(error);
                 });
             } else {
-                redirect()
+                if(store.role === 'internal_admin') {
+                    redirect()
+                }
             }
         }).catch(function (error) {
             console.log(error);
@@ -56,9 +64,10 @@ const EditCompany = ({match, location}) => {
             title={'Edit Company'}
             onSubmit={onSubmit}
             initialValues={state.data}
-            deleteHandler={(event) => deleteHandler(event, `/deletecompany/${match.params.id}`, redirect)}
+            role={store.role}
+            deleteHandler={(event) => deleteHandler(event, `/api/deletecompany/${match.params.id}`, redirect)}
         />
-            <RenderCompanyUsers match={match} location={location} endpoint={'usersincompany'} title={'company'} />
+            <CompanyTabs match={match} location={location} />
         </>
     )
 }
